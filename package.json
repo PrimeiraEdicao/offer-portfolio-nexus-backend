@@ -2,13 +2,12 @@
   "name": "offer-portfolio-nexus-backend",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/server.js",   
+  "main": "dist/server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "tsc",                         
-    "start": "node dist/server.js",         
-    "dev": "nodemon"                        
-
+    "build": "tsc",
+    "start": "node dist/server.js",
+    "dev": "nodemon"
   },
   "keywords": [],
   "author": "",
@@ -16,11 +15,11 @@
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^16.5.0",
-    "express": "^5.1.0"
+    "express": "^4.17.1"
   },
   "devDependencies": {
     "@types/cors": "^2.8.18",
-    "@types/express": "^5.0.2",
+    "@types/express": "^4.17.1",
     "@types/node": "^22.15.29",
     "nodemon": "^3.1.10",
     "ts-node": "^10.9.2",
