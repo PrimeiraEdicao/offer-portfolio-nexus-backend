@@ -3,27 +3,28 @@ import express, { Express, Request, Response, NextFunction } from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
 
-// Carrega variáveis de ambiente do arquivo .env
+import authRoutes from './routes/authRoutes'; // 1. IMPORTE AS ROTAS DE AUTENTICAÇÃO
+
 dotenv.config();
 
 const app: Express = express();
-const port = process.env.PORT || 3001; // Use uma porta diferente da do seu frontend
+const port = process.env.PORT || 3001;
 
-// Middlewares
-app.use(cors()); // Habilita CORS para todas as rotas
-app.use(express.json()); // Para parsear o corpo de requisições JSON
-app.use(express.urlencoded({ extended: true })); // Para parsear corpos de formulários URL-encoded
+app.use(cors());
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
-// Rota de Teste
+app.get('/', (req: Request, res: Response) => {
+    res.status(200).send('<h1>Bem-vindo ao Backend do Offer Portfolio Nexus!</h1><p>Servidor está no ar.</p><p>Tente acessar <a href="/api/health">/api/health</a></p>');
+});
+
 app.get('/api/health', (req: Request, res: Response) => {
   res.status(200).json({ status: 'UP', message: 'Backend is running!' });
 });
 
-// Exemplo de como você poderia adicionar suas rotas de autenticação
-// import authRoutes from './routes/authRoutes';
-// app.use('/api/auth', authRoutes);
+// 2. USE AS ROTAS DE AUTENTICAÇÃO COM UM PREFIXO
+app.use('/api/auth', authRoutes);
 
-// Middleware para tratamento de erros básico (opcional, mas bom para começar)
 app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
   console.error(err.stack);
   res.status(500).send('Algo deu errado no servidor!');
