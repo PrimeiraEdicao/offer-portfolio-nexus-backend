@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "target": "ES2020", // Ou mais recente, como ES2022
+    "module": "commonjs", // Padrão para Node.js com Express tradicional
+    "rootDir": "./src",
+    "outDir": "./dist",
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "skipLibCheck": true,
+    "resolveJsonModule": true // Se você planeja importar arquivos .json
+  },
+  "include": ["src/**/*"], // Quais arquivos o TypeScript deve compilar
+  "exclude": ["node_modules"]
+}
